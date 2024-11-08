@@ -6,8 +6,10 @@ function App() {
   const [count, setCount] = useState(0)
 
   useEffect(() => {
-    //@ts-ignore
-    Window.electron.subscibeStatistics((stets) => console.log(stets));
+    // Use optional chaining to prevent errors if electron is undefined
+    window.electron?.subscribeStatistics((stats) => {
+      console.log(stats);
+    });
   }, []);
 
   return (

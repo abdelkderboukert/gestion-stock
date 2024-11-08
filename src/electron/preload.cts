@@ -1,10 +1,14 @@
 const electron = require("electron");
 
-electron.contextBridge.exposeInMainWorld("electron", {
-    subscibeStatistics: (callback: (statistics: any) => void) => (
-        electron.ipcRenderer.on("statistics", (_, stat)=>(
-            callback(stat)
-        ))
-    ),
-    getStaticData: () => electron.ipcRenderer.invoke("getStaticData"),
-} satisfies Window["electron"])
+import { contextBridge, ipcRenderer } from 'electron';
+
+contextBridge.exposeInMainWorld('electron', {
+  subscribeStatistics: (callback: (statistics: statistics) => void) => {
+    ipcRenderer.on('statistics', (event, statistics) => {
+      callback(statistics);
+    });
+  },
+  getStaticData: () => {
+    return ipcRenderer.invoke('getStaticData');
+  }
+});
