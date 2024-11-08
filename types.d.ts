@@ -1,5 +1,5 @@
 // types.d.ts
-type statistics = {
+type Statistics = {
     cpuUsage: number,
     ramUsage: number, 
     storageData: {
@@ -9,15 +9,15 @@ type statistics = {
     message: string,
 };
 
-type staticData = {
+type StaticData = {
     totalStorage: number,
     cpuModel: string,
     totalMemoryGB: number,
 };
 
-interface Window {
+interface Window{
     electron: {
-        subscribeStatistics: (callback: (statistics: statistics) => void) => void;
-        getStaticData: () => Promise<staticData>; 
+        subscribeStatistics: (callback: (statistics: Statistics) => void) => void;
+        getStaticData: () => Promise<StaticData>; 
     }
 }

@@ -6,17 +6,16 @@ function App() {
   const [count, setCount] = useState(0)
 
   useEffect(() => {
-    // Use optional chaining to prevent errors if electron is undefined
-    window.electron?.subscribeStatistics((stats) => {
+    // @ts-ignore
+    window.electron.subscribeStatistics((stats) => {
       console.log(stats);
     });
   }, []);
-
   return (
     <>
       <div>
         <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react bg-white" alt="React logo" />
+          <img src={reactLogo} className="logo react" alt="React logo" />
         </a>
       </div>
       <h1>Vite + React</h1>
