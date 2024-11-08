@@ -1,15 +1,20 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import reactLogo from './assets/react.svg'
 import './App.css'
 
 function App() {
   const [count, setCount] = useState(0)
 
+  useEffect(() => {
+    //@ts-ignore
+    Window.electron.subscibeStatistics((stets) => console.log(stets));
+  }, []);
+
   return (
     <>
       <div>
         <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
+          <img src={reactLogo} className="logo react bg-white" alt="React logo" />
         </a>
       </div>
       <h1>Vite + React</h1>
