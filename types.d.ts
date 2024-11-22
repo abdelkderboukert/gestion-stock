@@ -15,6 +15,11 @@ type StaticData = {
     totalMemoryGB: number,
 };
 
+type electron = {
+    subscribeStatistics: (callback: (statistics: Statistics) => void) => void;
+    getStaticData: () => Promise<StaticData>; 
+};
+
 interface Window{
     electron: {
         subscribeStatistics: (callback: (statistics: Statistics) => void) => void;
