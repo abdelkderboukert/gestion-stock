@@ -11,4 +11,4 @@ electron.contextBridge.exposeInMainWorld("electron", {
   getStaticData: () => {
     return electron.ipcRenderer.invoke('getStaticData');
   }
-});
+} satisfies["electron"]);
